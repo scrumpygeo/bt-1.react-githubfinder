@@ -11,18 +11,20 @@ class App extends Component {
     loading: false
   };
 
-  async componentDidMount() {
-    this.setState({ loading: true });
+  // async componentDidMount() {
+  //   this.setState({ loading: true });
+  //   //  this is for getting default 1st 30 users. Can keep for landing page or delete.
+  //   const res = await axios.get(
+  //     `https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+  //   );
 
-    const res = await axios.get(
-      `https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
-    );
-
-    //after response reset state
-    this.setState({ users: res.data, loading: false });
-  }
+  //   //after response reset state
+  //   this.setState({ users: res.data, loading: false });
+  // }
 
   searchUsers = async text => {
+    this.setState({ loading: true });
+
     const res = await axios.get(
       `https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
     );
