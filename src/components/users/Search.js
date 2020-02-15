@@ -23,6 +23,7 @@ class Search extends Component {
   render() {
     // destructuring
     const { showClear, clearUsers } = this.props;
+
     return (
       <div>
         <form onSubmit={this.onSubmit} className='form'>
